@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏨 Hostel Management System
 
-## Getting Started
+A web-based **Hostel Management System** designed for easy room booking, guest tracking, and admin control.  
+Built with **Next.js, Zustand, and TailwindCSS**, this project helps administrators manage bookings and rooms in a simple and efficient way.
 
-First, run the development server:
+## 📑 Table of Contents
+- [About](#about)
+- [Features](#features)
+- [Technology Stack](#technology-stack)
+- [Project Phases & Progress](#project-phases--progress)
+- [Getting Started](#getting-started)
+- [Contact](#contact)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ℹ️ About
+The **Hostel Management System** simplifies how administrators manage rooms and bookings.  
+It provides a centralized platform to:
+- Track bookings
+- Update room availability
+- Manage occupancy
+- Cancel or update reservations
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This project is a foundation for building a complete hostel management solution that can be extended with authentication, database integration, and payment systems.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ✨ Features
+- **Authentication (Admin only)**  
+- **Booking Management**: Add, update, and cancel bookings  
+- **Room Management**: Track status (available, occupied, maintenance) and occupancy  
+- **Dashboard**: View bookings and rooms in real time  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠 Technology Stack
+**Frontend**
+- Next.js  
+- React
+- TailwindCSS + shadcn/ui
+- Lucide-react (icons)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**State Management**
+- Zustand (for booking & room store)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🚧 Project Phases & Progress
+**Phase 1: Basic Admin Dashboard (✅ Completed)**  
+- Booking store 
+- Room list and statuses  
+- Add/cancel bookings  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Phase 2: Authentication & Role Control (🔜 Upcoming)**  
+- Replace localStorage auth with NextAuth  
+- Multi-role support (Admin, Staff)  
+
+**Phase 3: Database & Payments (🔜 Future)**  
+- Integrate with PostgreSQL/MongoDB  
+- Payment gateway integration  
+- Reporting and analytics  
+
