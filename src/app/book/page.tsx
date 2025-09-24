@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -152,10 +151,9 @@ export default function BookingPage() {
                       <h3 className="text-lg font-semibold">Personal Information</h3>
                       <div className="grid md:grid-cols-3 gap-5">
                         <div>
-                            
-                          <Label htmlFor="firstName display:block margin-bottom:6px ">First Name</Label>
+                          <Label htmlFor="firstName">First Name</Label>
                           <Input
-                            id="firstName padding:8px"
+                            id="firstName"
                             value={formData.firstName}
                             onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                             required
@@ -205,7 +203,7 @@ export default function BookingPage() {
                             <PopoverTrigger asChild>
                               <Button
                                 variant="outline"
-                                className="w-full padding-10 justify-start text-left font-normal bg-transparent"
+                                className="w-full justify-start text-left font-normal bg-transparent"
                               >
                                 <CalendarIcon className="mr-2 h-4 w-4" />
                                 {checkIn ? format(checkIn, "PPP") : "Select date"}
@@ -255,7 +253,7 @@ export default function BookingPage() {
                             </SelectTrigger>
                             <SelectContent>
                               <SelectItem value="dorm">Shared Dorm - rs1000/night</SelectItem>
-                              <SelectItem value="private">Private Room - rs3000/night</SelectItem>
+                              <SelectItem value="private">Private Room - rs2000/night</SelectItem>
                               <SelectItem value="ensuite">Ensuite Room - rs4000/night</SelectItem>
                             </SelectContent>
                           </Select>
@@ -264,7 +262,7 @@ export default function BookingPage() {
                           <Label htmlFor="guests">Number of Guests</Label>
                           <Select value={guests} onValueChange={setGuests}>
                             <SelectTrigger>
-                              <SelectValue />
+                              <SelectValue placeholder="Select guests" />
                             </SelectTrigger>
                             <SelectContent>
                               <SelectItem value="1">1 Guest</SelectItem>

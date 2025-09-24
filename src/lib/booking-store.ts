@@ -12,6 +12,7 @@ interface Booking {
   guests: number
   status: string
   total: number
+  specialRequests?: string 
 }
 
 interface Room {
