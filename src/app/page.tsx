@@ -21,10 +21,11 @@ export default function HomePage() {
               <Link href="#rooms" className="text-muted-foreground hover:text-foreground transition-colors">
                 Rooms
               </Link>
-              <Link href="#amenities" className="text-muted-foreground hover:text-foreground transition-colors">
-                Amenities
+              <Link href="#facilities" className="text-muted-foreground hover:text-foreground transition-colors">
+              facilities
+
               </Link>
-              <Link href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">
+              <Link href="/contact" className="text-muted-foreground hover:text-foreground transition-colors">
                 Contact
               </Link>
               <Button asChild>
@@ -116,7 +117,7 @@ export default function HomePage() {
               </CardHeader>
               <CardContent>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-2xl font-bold">$25</span>
+                  <span className="text-2xl font-bold">rs1000</span>
                   <span className="text-muted-foreground">per night</span>
                 </div>
                 <ul className="space-y-2 text-sm text-muted-foreground mb-4">
@@ -141,7 +142,7 @@ export default function HomePage() {
               </CardHeader>
               <CardContent>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-2xl font-bold">$55</span>
+                  <span className="text-2xl font-bold">rs3000</span>
                   <span className="text-muted-foreground">per night</span>
                 </div>
                 <ul className="space-y-2 text-sm text-muted-foreground mb-4">
@@ -166,7 +167,7 @@ export default function HomePage() {
               </CardHeader>
               <CardContent>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-2xl font-bold">$85</span>
+                  <span className="text-2xl font-bold">rs4000</span>
                   <span className="text-muted-foreground">per night</span>
                 </div>
                 <ul className="space-y-2 text-sm text-muted-foreground mb-4">
@@ -212,8 +213,8 @@ export default function HomePage() {
                     <span className="text-sm font-semibold text-blue-600">JS</span>
                   </div>
                   <div>
-                    <p className="font-semibold">John Smith</p>
-                    <p className="text-sm text-muted-foreground">Backpacker</p>
+                    <p className="font-semibold">Rasmita bhattrai</p>
+                    <p className="text-sm text-muted-foreground">solo Traveler</p>
                   </div>
                 </div>
               </CardContent>
@@ -234,8 +235,8 @@ export default function HomePage() {
                     <span className="text-sm font-semibold text-green-600">MJ</span>
                   </div>
                   <div>
-                    <p className="font-semibold">Maria Johnson</p>
-                    <p className="text-sm text-muted-foreground">Solo Traveler</p>
+                    <p className="font-semibold">Aishwarya sanjel</p>
+                    <p className="text-sm text-muted-foreground"></p>
                   </div>
                 </div>
               </CardContent>
@@ -256,7 +257,7 @@ export default function HomePage() {
                     <span className="text-sm font-semibold text-purple-600">AL</span>
                   </div>
                   <div>
-                    <p className="font-semibold">Alex Lee</p>
+                    <p className="font-semibold">Nirmala mangrati</p>
                     <p className="text-sm text-muted-foreground">Digital Nomad</p>
                   </div>
                 </div>
@@ -296,8 +297,8 @@ export default function HomePage() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#amenities" className="hover:text-foreground transition-colors">
-                    Amenities
+                  <Link href="#facilities"className="hover:text-foreground transition-colors">
+                    facilities
                   </Link>
                 </li>
                 <li>
@@ -313,9 +314,9 @@ export default function HomePage() {
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-center gap-2">
                   <MapPin className="h-4 w-4" />
-                  123 Hostel Street, City
+                  basundhara
                 </li>
-                <li>Phone: +1 (555) 123-4567</li>
+                <li>Phone: 983-4567</li>
                 <li>Email: info@hostelhub.com</li>
               </ul>
             </div>

@@ -27,29 +27,6 @@ import { AuthGuard } from "@/components/auth-guard"
 import { useRouter } from "next/navigation"
 import { useBookingStore } from "@/lib/booking-store"
 
-// ---------- Types ----------
-interface Booking {
-  id: string
-  guestName: string
-  email: string
-  roomType: string
-  checkIn: string
-  checkOut: string
-  guests: number
-  status: string
-  total: number
-}
-
-interface Room {
-  id: string
-  status: string
-  type: string
-  capacity: number
-  occupied: number
-  price: number
-}
-
-// ---------- Dashboard ----------
 function AdminDashboardContent() {
   const [searchTerm, setSearchTerm] = useState("")
   const [statusFilter, setStatusFilter] = useState("all")
@@ -112,7 +89,7 @@ function AdminDashboardContent() {
     }
   }
 
-  const filteredBookings = bookings.filter((booking: Booking) => {
+  const filteredBookings = bookings.filter((booking) => {
     const matchesSearch =
       booking.guestName.toLowerCase().includes(searchTerm.toLowerCase()) ||
       booking.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -153,9 +130,8 @@ function AdminDashboardContent() {
         </div>
       </header>
 
-      {/* Dashboard Body */}
       <div className="container mx-auto px-4 py-8">
-        {/* Stats */}
+        {/* Dashboard Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -202,12 +178,14 @@ function AdminDashboardContent() {
           </Card>
         </div>
 
-        {/* Tabs */}
+        {/* Main Content Tabs */}
         <Tabs defaultValue="bookings" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-3">
+          <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger value="bookings">Bookings</TabsTrigger>
             <TabsTrigger value="rooms">Rooms</TabsTrigger>
             <TabsTrigger value="guests">Guests</TabsTrigger>
+            <TabsTrigger value="staff">Staff</TabsTrigger>
+            <TabsTrigger value="settings">Settings</TabsTrigger>
           </TabsList>
 
           {/* Bookings Tab */}
@@ -255,7 +233,7 @@ function AdminDashboardContent() {
                   </Select>
                 </div>
 
-                {/* Table */}
+                {/* Bookings Table */}
                 <div className="rounded-md border">
                   <Table>
                     <TableHeader>
@@ -416,13 +394,217 @@ function AdminDashboardContent() {
               </CardContent>
             </Card>
           </TabsContent>
+
+          {/* Staff Management Tab */}
+          <TabsContent value="staff" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <CardTitle>Staff Management</CardTitle>
+                    <CardDescription>Manage hostel staff and their permissions</CardDescription>
+                  </div>
+                  <Button>
+                    <Plus className="h-4 w-4 mr-2" />
+                    Add Staff
+                  </Button>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="rounded-md border">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Name</TableHead>
+                        <TableHead>Role</TableHead>
+                        <TableHead>Email</TableHead>
+                        <TableHead>Status</TableHead>
+                        <TableHead>Last Login</TableHead>
+                        <TableHead className="w-[50px]"></TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      <TableRow>
+                        <TableCell>
+                          <div className="flex items-center gap-3">
+                            <div className="h-8 w-8 bg-blue-100 rounded-full flex items-center justify-center">
+                              <span className="text-sm font-semibold text-blue-600">JD</span>
+                            </div>
+                            <span className="font-medium">John Doe</span>
+                          </div>
+                        </TableCell>
+                        <TableCell>
+                          <Badge className="bg-purple-100 text-purple-800">Admin</Badge>
+                        </TableCell>
+                        <TableCell>john@hostelhub.com</TableCell>
+                        <TableCell>
+                          <Badge className="bg-green-100 text-green-800">Active</Badge>
+                        </TableCell>
+                        <TableCell>2 hours ago</TableCell>
+                        <TableCell>
+                          <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                              <Button variant="ghost" size="sm">
+                                <MoreHorizontal className="h-4 w-4" />
+                              </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                              <DropdownMenuItem>Edit Profile</DropdownMenuItem>
+                              <DropdownMenuItem>Change Role</DropdownMenuItem>
+                              <DropdownMenuItem>Reset Password</DropdownMenuItem>
+                              <DropdownMenuItem className="text-red-600">Deactivate</DropdownMenuItem>
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                        </TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell>
+                          <div className="flex items-center gap-3">
+                            <div className="h-8 w-8 bg-green-100 rounded-full flex items-center justify-center">
+                              <span className="text-sm font-semibold text-green-600">SM</span>
+                            </div>
+                            <span className="font-medium">Sarah Miller</span>
+                          </div>
+                        </TableCell>
+                        <TableCell>
+                          <Badge className="bg-blue-100 text-blue-800">Receptionist</Badge>
+                        </TableCell>
+                        <TableCell>sarah@hostelhub.com</TableCell>
+                        <TableCell>
+                          <Badge className="bg-green-100 text-green-800">Active</Badge>
+                        </TableCell>
+                        <TableCell>1 day ago</TableCell>
+                        <TableCell>
+                          <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                              <Button variant="ghost" size="sm">
+                                <MoreHorizontal className="h-4 w-4" />
+                              </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                              <DropdownMenuItem>Edit Profile</DropdownMenuItem>
+                              <DropdownMenuItem>Change Role</DropdownMenuItem>
+                              <DropdownMenuItem>Reset Password</DropdownMenuItem>
+                              <DropdownMenuItem className="text-red-600">Deactivate</DropdownMenuItem>
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                        </TableCell>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Settings Tab */}
+          <TabsContent value="settings" className="space-y-6">
+            <div className="grid gap-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Hostel Settings</CardTitle>
+                  <CardDescription>Configure your hostel's basic information and policies</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-sm font-medium">Hostel Name</label>
+                      <Input defaultValue="HostelHub" />
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium">Contact Email</label>
+                      <Input defaultValue="info@hostelhub.com" />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-sm font-medium">Phone Number</label>
+                      <Input defaultValue="+1 (555) 123-4567" />
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium">Check-in Time</label>
+                      <Input defaultValue="15:00" />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium">Address</label>
+                    <Input defaultValue="123 Hostel Street, City" />
+                  </div>
+                  <Button>Save Changes</Button>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>Pricing & Policies</CardTitle>
+                  <CardDescription>Manage room rates and booking policies</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="grid grid-cols-3 gap-4">
+                    <div>
+                      <label className="text-sm font-medium">Dorm Rate (per night)</label>
+                      <Input defaultValue="1000" type="number" />
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium">Private Room Rate</label>
+                      <Input defaultValue="3000" type="number" />
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium">Ensuite Room Rate</label>
+                      <Input defaultValue="4000" type="number" />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-sm font-medium">Cancellation Policy (hours)</label>
+                      <Input defaultValue="24" type="number" />
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium">Maximum Stay (nights)</label>
+                      <Input defaultValue="30" type="number" />
+                    </div>
+                  </div>
+                  <Button>Update Pricing</Button>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>System Maintenance</CardTitle>
+                  <CardDescription>System utilities and maintenance tools</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex items-center justify-between p-4 border rounded-lg">
+                    <div>
+                      <h4 className="font-medium">Backup Data</h4>
+                      <p className="text-sm text-muted-foreground">Create a backup of all booking and guest data</p>
+                    </div>
+                    <Button variant="outline">Create Backup</Button>
+                  </div>
+                  <div className="flex items-center justify-between p-4 border rounded-lg">
+                    <div>
+                      <h4 className="font-medium">System Reports</h4>
+                      <p className="text-sm text-muted-foreground">Generate monthly occupancy and revenue reports</p>
+                    </div>
+                    <Button variant="outline">Generate Report</Button>
+                  </div>
+                  <div className="flex items-center justify-between p-4 border rounded-lg">
+                    <div>
+                      <h4 className="font-medium">Clear Cache</h4>
+                      <p className="text-sm text-muted-foreground">Clear system cache to improve performance</p>
+                    </div>
+                    <Button variant="outline">Clear Cache</Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </TabsContent>
         </Tabs>
       </div>
     </div>
   )
 }
 
-// ---------- Export ----------
 export default function AdminDashboard() {
   return (
     <AuthGuard requiredRole="admin">

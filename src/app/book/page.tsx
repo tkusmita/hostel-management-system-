@@ -39,9 +39,9 @@ export default function BookingPage() {
   })
 
   const roomPrices = {
-    dorm: 25,
-    private: 55,
-    ensuite: 85,
+    dorm: 1000,
+    private: 2000,
+    ensuite: 4000,
   }
 
   const calculateTotal = () => {
@@ -150,11 +150,12 @@ export default function BookingPage() {
                     {/* Personal Information */}
                     <div className="space-y-4">
                       <h3 className="text-lg font-semibold">Personal Information</h3>
-                      <div className="grid md:grid-cols-2 gap-4">
+                      <div className="grid md:grid-cols-3 gap-5">
                         <div>
-                          <Label htmlFor="firstName">First Name</Label>
+                            
+                          <Label htmlFor="firstName display:block margin-bottom:6px ">First Name</Label>
                           <Input
-                            id="firstName"
+                            id="firstName padding:8px"
                             value={formData.firstName}
                             onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                             required
@@ -204,7 +205,7 @@ export default function BookingPage() {
                             <PopoverTrigger asChild>
                               <Button
                                 variant="outline"
-                                className="w-full justify-start text-left font-normal bg-transparent"
+                                className="w-full padding-10 justify-start text-left font-normal bg-transparent"
                               >
                                 <CalendarIcon className="mr-2 h-4 w-4" />
                                 {checkIn ? format(checkIn, "PPP") : "Select date"}
@@ -253,9 +254,9 @@ export default function BookingPage() {
                               <SelectValue placeholder="Select room type" />
                             </SelectTrigger>
                             <SelectContent>
-                              <SelectItem value="dorm">Shared Dorm - $25/night</SelectItem>
-                              <SelectItem value="private">Private Room - $55/night</SelectItem>
-                              <SelectItem value="ensuite">Ensuite Room - $85/night</SelectItem>
+                              <SelectItem value="dorm">Shared Dorm - rs1000/night</SelectItem>
+                              <SelectItem value="private">Private Room - rs3000/night</SelectItem>
+                              <SelectItem value="ensuite">Ensuite Room - rs4000/night</SelectItem>
                             </SelectContent>
                           </Select>
                         </div>
@@ -327,7 +328,7 @@ export default function BookingPage() {
                       </div>
                       <div className="flex justify-between text-sm">
                         <span>Price per night:</span>
-                        <span>${roomPrices[roomType as keyof typeof roomPrices]}</span>
+                        <span>rs{roomPrices[roomType as keyof typeof roomPrices]}</span>
                       </div>
                     </div>
                   )}
@@ -340,7 +341,7 @@ export default function BookingPage() {
                   <div className="border-t pt-4">
                     <div className="flex justify-between font-semibold">
                       <span>Total:</span>
-                      <span>${calculateTotal()}</span>
+                      <span>rs{calculateTotal()}</span>
                     </div>
                   </div>
 
